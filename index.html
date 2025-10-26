@@ -3,431 +3,1079 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CSS Fun Learning - Interactive Tutorial for Kids!</title>
+    <title>CSS Coding School for Kids!</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
         <!-- Header Section -->
         <header class="header">
-            <h1>🎨 CSS Fun Learning! 🎨</h1>
-            <p>Learn CSS with fun interactive exercises!</p>
+            <h1>🎨 CSS Coding School for Kids! 🎨</h1>
+            <p>Learn to write CSS code step by step!</p>
             <div class="progress-bar">
                 <div class="progress-fill" id="progressFill"></div>
-                <span class="progress-text" id="progressText">0/50 Complete</span>
+                <span class="progress-text" id="progressText">0/50 Lessons Complete</span>
             </div>
         </header>
 
         <!-- Navigation -->
         <nav class="nav">
-            <button class="nav-btn active" data-section="basics">🌈 Basics</button>
+            <button class="nav-btn active" data-section="basics">🌈 CSS Basics</button>
             <button class="nav-btn" data-section="colors">🎨 Colors</button>
-            <button class="nav-btn" data-section="shapes">🔷 Shapes</button>
-            <button class="nav-btn" data-section="text">📝 Text</button>
+            <button class="nav-btn" data-section="text">📝 Text Styling</button>
             <button class="nav-btn" data-section="layout">📐 Layout</button>
+            <button class="nav-btn" data-section="shapes">🔷 Shapes</button>
             <button class="nav-btn" data-section="animations">✨ Animations</button>
         </nav>
 
         <!-- Main Content -->
         <main class="main-content">
-            <!-- Basics Section -->
+            <!-- CSS Basics Section -->
             <section id="basics" class="section active">
-                <h2>🌈 CSS Basics</h2>
+                <h2>🌈 CSS Basics - Learn to Code!</h2>
                 <p>Let's start with the basics! CSS helps us make websites look beautiful!</p>
                 
-                <div class="exercise-grid">
-                    <div class="exercise-card" data-exercise="1">
-                        <h3>Exercise 1: Hello CSS!</h3>
-                        <p>Click the button to change the background color!</p>
-                        <div class="demo-box" id="demo1">Hello CSS!</div>
-                        <button class="exercise-btn" onclick="changeBackground('demo1')">Change Color!</button>
+                <div class="lesson-grid">
+                    <!-- Lesson 1: Hello CSS -->
+                    <div class="lesson-card" data-lesson="1">
+                        <h3>Lesson 1: Hello CSS!</h3>
+                        <div class="lesson-content">
+                            <div class="explanation">
+                                <h4>📚 What you'll learn:</h4>
+                                <p>CSS stands for "Cascading Style Sheets". It's like giving instructions to make things look pretty!</p>
+                                <div class="code-example">
+                                    <h5>💡 Example:</h5>
+                                    <pre><code>background-color: red;</code></pre>
+                                    <p>This makes the background red!</p>
+                                </div>
+                            </div>
+                            
+                            <div class="coding-area">
+                                <h4>✏️ Your Turn - Write CSS Code:</h4>
+                                <div class="code-editor">
+                                    <textarea id="code1" placeholder="Write your CSS code here..."></textarea>
+                                </div>
+                                <button class="run-btn" onclick="runCode(1)">🎯 Run My Code!</button>
+                                <div class="result-area">
+                                    <div class="demo-box" id="result1">Hello CSS!</div>
+                                </div>
+                                <div class="hint-area" id="hint1">
+                                    <button class="hint-btn" onclick="showHint(1)">💡 Need Help?</button>
+                                    <div class="hint-content" id="hintContent1" style="display: none;">
+                                        <p>Try: <code>background-color: red;</code> or <code>background-color: green;</code></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="exercise-card" data-exercise="2">
-                        <h3>Exercise 2: Big and Small</h3>
-                        <p>Make the text bigger or smaller!</p>
-                        <div class="demo-box" id="demo2">Size me up!</div>
-                        <button class="exercise-btn" onclick="changeSize('demo2', 'big')">Bigger!</button>
-                        <button class="exercise-btn" onclick="changeSize('demo2', 'small')">Smaller!</button>
+                    <!-- Lesson 2: Text Size -->
+                    <div class="lesson-card" data-lesson="2">
+                        <h3>Lesson 2: Making Text Bigger!</h3>
+                        <div class="lesson-content">
+                            <div class="explanation">
+                                <h4>📚 What you'll learn:</h4>
+                                <p>We can make text bigger or smaller using the <code>font-size</code> property!</p>
+                                <div class="code-example">
+                                    <h5>💡 Example:</h5>
+                                    <pre><code>font-size: 20px;</code></pre>
+                                    <p>This makes text 20 pixels big!</p>
+                                </div>
+                            </div>
+                            
+                            <div class="coding-area">
+                                <h4>✏️ Your Turn - Write CSS Code:</h4>
+                                <div class="code-editor">
+                                    <textarea id="code2" placeholder="Write your CSS code here..."></textarea>
+                                </div>
+                                <button class="run-btn" onclick="runCode(2)">🎯 Run My Code!</button>
+                                <div class="result-area">
+                                    <div class="demo-box" id="result2">Make me bigger!</div>
+                                </div>
+                                <div class="hint-area" id="hint2">
+                                    <button class="hint-btn" onclick="showHint(2)">💡 Need Help?</button>
+                                    <div class="hint-content" id="hintContent2" style="display: none;">
+                                        <p>Try: <code>font-size: 30px;</code> for bigger text or <code>font-size: 12px;</code> for smaller text</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="exercise-card" data-exercise="3">
-                        <h3>Exercise 3: Bold Text</h3>
-                        <p>Make text bold!</p>
-                        <div class="demo-box" id="demo3">Make me bold!</div>
-                        <button class="exercise-btn" onclick="makeBold('demo3')">Bold!</button>
+                    <!-- Lesson 3: Bold Text -->
+                    <div class="lesson-card" data-lesson="3">
+                        <h3>Lesson 3: Making Text Bold!</h3>
+                        <div class="lesson-content">
+                            <div class="explanation">
+                                <h4>📚 What you'll learn:</h4>
+                                <p>We can make text bold using the <code>font-weight</code> property!</p>
+                                <div class="code-example">
+                                    <h5>💡 Example:</h5>
+                                    <pre><code>font-weight: bold;</code></pre>
+                                    <p>This makes text bold!</p>
+                                </div>
+                            </div>
+                            
+                            <div class="coding-area">
+                                <h4>✏️ Your Turn - Write CSS Code:</h4>
+                                <div class="code-editor">
+                                    <textarea id="code3" placeholder="Write your CSS code here..."></textarea>
+                                </div>
+                                <button class="run-btn" onclick="runCode(3)">🎯 Run My Code!</button>
+                                <div class="result-area">
+                                    <div class="demo-box" id="result3">Make me bold!</div>
+                                </div>
+                                <div class="hint-area" id="hint3">
+                                    <button class="hint-btn" onclick="showHint(3)">💡 Need Help?</button>
+                                    <div class="hint-content" id="hintContent3" style="display: none;">
+                                        <p>Try: <code>font-weight: bold;</code> or <code>font-weight: normal;</code></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="exercise-card" data-exercise="4">
-                        <h3>Exercise 4: Italic Text</h3>
-                        <p>Make text slanted!</p>
-                        <div class="demo-box" id="demo4">Make me slanted!</div>
-                        <button class="exercise-btn" onclick="makeItalic('demo4')">Slant!</button>
+                    <!-- Lesson 4: Text Color -->
+                    <div class="lesson-card" data-lesson="4">
+                        <h3>Lesson 4: Changing Text Color!</h3>
+                        <div class="lesson-content">
+                            <div class="explanation">
+                                <h4>📚 What you'll learn:</h4>
+                                <p>We can change text color using the <code>color</code> property!</p>
+                                <div class="code-example">
+                                    <h5>💡 Example:</h5>
+                                    <pre><code>color: red;</code></pre>
+                                    <p>This makes text red!</p>
+                                </div>
+                            </div>
+                            
+                            <div class="coding-area">
+                                <h4>✏️ Your Turn - Write CSS Code:</h4>
+                                <div class="code-editor">
+                                    <textarea id="code4" placeholder="Write your CSS code here..."></textarea>
+                                </div>
+                                <button class="run-btn" onclick="runCode(4)">🎯 Run My Code!</button>
+                                <div class="result-area">
+                                    <div class="demo-box" id="result4">Change my color!</div>
+                                </div>
+                                <div class="hint-area" id="hint4">
+                                    <button class="hint-btn" onclick="showHint(4)">💡 Need Help?</button>
+                                    <div class="hint-content" id="hintContent4" style="display: none;">
+                                        <p>Try: <code>color: blue;</code>, <code>color: green;</code>, or <code>color: orange;</code></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="exercise-card" data-exercise="5">
-                        <h3>Exercise 5: Underline Text</h3>
-                        <p>Add a line under the text!</p>
-                        <div class="demo-box" id="demo5">Underline me!</div>
-                        <button class="exercise-btn" onclick="makeUnderline('demo5')">Underline!</button>
+                    <!-- Lesson 5: Borders -->
+                    <div class="lesson-card" data-lesson="5">
+                        <h3>Lesson 5: Adding Borders!</h3>
+                        <div class="lesson-content">
+                            <div class="explanation">
+                                <h4>📚 What you'll learn:</h4>
+                                <p>We can add borders around elements using the <code>border</code> property!</p>
+                                <div class="code-example">
+                                    <h5>💡 Example:</h5>
+                                    <pre><code>border: 3px solid red;</code></pre>
+                                    <p>This adds a red border!</p>
+                                </div>
+                            </div>
+                            
+                            <div class="coding-area">
+                                <h4>✏️ Your Turn - Write CSS Code:</h4>
+                                <div class="code-editor">
+                                    <textarea id="code5" placeholder="Write your CSS code here..."></textarea>
+                                </div>
+                                <button class="run-btn" onclick="runCode(5)">🎯 Run My Code!</button>
+                                <div class="result-area">
+                                    <div class="demo-box" id="result5">Add a border!</div>
+                                </div>
+                                <div class="hint-area" id="hint5">
+                                    <button class="hint-btn" onclick="showHint(5)">💡 Need Help?</button>
+                                    <div class="hint-content" id="hintContent5" style="display: none;">
+                                        <p>Try: <code>border: 2px solid green;</code> or <code>border: 10px solid purple;</code></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="exercise-card" data-exercise="6">
-                        <h3>Exercise 6: Center Text</h3>
-                        <p>Move text to the center!</p>
-                        <div class="demo-box" id="demo6">Center me!</div>
-                        <button class="exercise-btn" onclick="centerText('demo6')">Center!</button>
+                    <!-- Lesson 6: Multiple Properties -->
+                    <div class="lesson-card" data-lesson="6">
+                        <h3>Lesson 6: Combining Properties!</h3>
+                        <div class="lesson-content">
+                            <div class="explanation">
+                                <h4>📚 What you'll learn:</h4>
+                                <p>We can use multiple CSS properties together! Just put each one on a new line.</p>
+                                <div class="code-example">
+                                    <h5>💡 Example:</h5>
+                                    <pre><code>background-color: yellow;
+color: red;
+font-size: 20px;</code></pre>
+                                    <p>This combines background, text color, and size!</p>
+                                </div>
+                            </div>
+                            
+                            <div class="coding-area">
+                                <h4>✏️ Your Turn - Write CSS Code:</h4>
+                                <div class="code-editor">
+                                    <textarea id="code6" placeholder="Write your CSS code here..."></textarea>
+                                </div>
+                                <button class="run-btn" onclick="runCode(6)">🎯 Run My Code!</button>
+                                <div class="result-area">
+                                    <div class="demo-box" id="result6">Style me completely!</div>
+                                </div>
+                                <div class="hint-area" id="hint6">
+                                    <button class="hint-btn" onclick="showHint(6)">💡 Need Help?</button>
+                                    <div class="hint-content" id="hintContent6" style="display: none;">
+                                        <p>Try combining: <code>background-color: orange;</code>, <code>color: blue;</code>, and <code>font-size: 25px;</code></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="exercise-card" data-exercise="7">
-                        <h3>Exercise 7: Hide and Show</h3>
-                        <p>Hide and show the text!</p>
-                        <div class="demo-box" id="demo7">Hide me!</div>
-                        <button class="exercise-btn" onclick="hideText('demo7')">Hide!</button>
-                        <button class="exercise-btn" onclick="showText('demo7')">Show!</button>
+                    <!-- Lesson 7: Text Alignment -->
+                    <div class="lesson-card" data-lesson="7">
+                        <h3>Lesson 7: Centering Text!</h3>
+                        <div class="lesson-content">
+                            <div class="explanation">
+                                <h4>📚 What you'll learn:</h4>
+                                <p>We can center text using the <code>text-align</code> property!</p>
+                                <div class="code-example">
+                                    <h5>💡 Example:</h5>
+                                    <pre><code>text-align: center;</code></pre>
+                                    <p>This centers the text!</p>
+                                </div>
+                            </div>
+                            
+                            <div class="coding-area">
+                                <h4>✏️ Your Turn - Write CSS Code:</h4>
+                                <div class="code-editor">
+                                    <textarea id="code7" placeholder="Write your CSS code here..."></textarea>
+                                </div>
+                                <button class="run-btn" onclick="runCode(7)">🎯 Run My Code!</button>
+                                <div class="result-area">
+                                    <div class="demo-box" id="result7">Center me!</div>
+                                </div>
+                                <div class="hint-area" id="hint7">
+                                    <button class="hint-btn" onclick="showHint(7)">💡 Need Help?</button>
+                                    <div class="hint-content" id="hintContent7" style="display: none;">
+                                        <p>Try: <code>text-align: center;</code>, <code>text-align: left;</code>, or <code>text-align: right;</code></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="exercise-card" data-exercise="8">
-                        <h3>Exercise 8: Border Magic</h3>
-                        <p>Add a border around the text!</p>
-                        <div class="demo-box" id="demo8">Border me!</div>
-                        <button class="exercise-btn" onclick="addBorder('demo8')">Add Border!</button>
+                    <!-- Lesson 8: Padding -->
+                    <div class="lesson-card" data-lesson="8">
+                        <h3>Lesson 8: Adding Space Inside!</h3>
+                        <div class="lesson-content">
+                            <div class="explanation">
+                                <h4>📚 What you'll learn:</h4>
+                                <p>We can add space inside elements using the <code>padding</code> property!</p>
+                                <div class="code-example">
+                                    <h5>💡 Example:</h5>
+                                    <pre><code>padding: 20px;</code></pre>
+                                    <p>This adds 20 pixels of space inside!</p>
+                                </div>
+                            </div>
+                            
+                            <div class="coding-area">
+                                <h4>✏️ Your Turn - Write CSS Code:</h4>
+                                <div class="code-editor">
+                                    <textarea id="code8" placeholder="Write your CSS code here..."></textarea>
+                                </div>
+                                <button class="run-btn" onclick="runCode(8)">🎯 Run My Code!</button>
+                                <div class="result-area">
+                                    <div class="demo-box" id="result8">Add space inside me!</div>
+                                </div>
+                                <div class="hint-area" id="hint8">
+                                    <button class="hint-btn" onclick="showHint(8)">💡 Need Help?</button>
+                                    <div class="hint-content" id="hintContent8" style="display: none;">
+                                        <p>Try: <code>padding: 15px;</code> for less space or <code>padding: 50px;</code> for more space</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
 
             <!-- Colors Section -->
             <section id="colors" class="section">
-                <h2>🎨 Colors</h2>
-                <p>Colors make everything more fun! Let's learn about different colors!</p>
+                <h2>🎨 Colors - Learn Color Coding!</h2>
+                <p>Let's learn about different ways to use colors in CSS!</p>
                 
-                <div class="exercise-grid">
-                    <div class="exercise-card" data-exercise="9">
-                        <h3>Exercise 9: Rainbow Colors</h3>
-                        <p>Click to see rainbow colors!</p>
-                        <div class="demo-box" id="demo9">Rainbow!</div>
-                        <button class="exercise-btn" onclick="rainbowColors('demo9')">Rainbow!</button>
+                <div class="lesson-grid">
+                    <!-- Lesson 9: Color Names -->
+                    <div class="lesson-card" data-lesson="9">
+                        <h3>Lesson 9: Color Names!</h3>
+                        <div class="lesson-content">
+                            <div class="explanation">
+                                <h4>📚 What you'll learn:</h4>
+                                <p>CSS knows many color names! You can use words like red, blue, green, etc.</p>
+                                <div class="code-example">
+                                    <h5>💡 Example:</h5>
+                                    <pre><code>background-color: red;</code></pre>
+                                    <p>This makes the background red!</p>
+                                </div>
+                            </div>
+                            
+                            <div class="coding-area">
+                                <h4>✏️ Your Turn - Write CSS Code:</h4>
+                                <div class="code-editor">
+                                    <textarea id="code9" placeholder="Write your CSS code here..."></textarea>
+                                </div>
+                                <button class="run-btn" onclick="runCode(9)">🎯 Run My Code!</button>
+                                <div class="result-area">
+                                    <div class="demo-box" id="result9">Color me!</div>
+                                </div>
+                                <div class="hint-area" id="hint9">
+                                    <button class="hint-btn" onclick="showHint(9)">💡 Need Help?</button>
+                                    <div class="hint-content" id="hintContent9" style="display: none;">
+                                        <p>Try: <code>background-color: orange;</code>, <code>background-color: pink;</code>, or <code>background-color: yellow;</code></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="exercise-card" data-exercise="10">
-                        <h3>Exercise 10: Red Color</h3>
-                        <p>Make it red!</p>
-                        <div class="demo-box" id="demo10">Make me red!</div>
-                        <button class="exercise-btn" onclick="changeColor('demo10', 'red')">Red!</button>
+                    <!-- Lesson 10: RGB Colors -->
+                    <div class="lesson-card" data-lesson="10">
+                        <h3>Lesson 10: RGB Colors!</h3>
+                        <div class="lesson-content">
+                            <div class="explanation">
+                                <h4>📚 What you'll learn:</h4>
+                                <p>RGB means Red, Green, Blue! We can mix these colors to make any color we want!</p>
+                                <div class="code-example">
+                                    <h5>💡 Example:</h5>
+                                    <pre><code>background-color: rgb(255, 0, 0);</code></pre>
+                                    <p>This makes pure red! (255 red, 0 green, 0 blue)</p>
+                                </div>
+                            </div>
+                            
+                            <div class="coding-area">
+                                <h4>✏️ Your Turn - Write CSS Code:</h4>
+                                <div class="code-editor">
+                                    <textarea id="code10" placeholder="Write your CSS code here..."></textarea>
+                                </div>
+                                <button class="run-btn" onclick="runCode(10)">🎯 Run My Code!</button>
+                                <div class="result-area">
+                                    <div class="demo-box" id="result10">Make me green!</div>
+                                </div>
+                                <div class="hint-area" id="hint10">
+                                    <button class="hint-btn" onclick="showHint(10)">💡 Need Help?</button>
+                                    <div class="hint-content" id="hintContent10" style="display: none;">
+                                        <p>Try: <code>rgb(0, 0, 255)</code> for blue or <code>rgb(255, 255, 0)</code> for yellow</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="exercise-card" data-exercise="11">
-                        <h3>Exercise 11: Blue Color</h3>
-                        <p>Make it blue!</p>
-                        <div class="demo-box" id="demo11">Make me blue!</div>
-                        <button class="exercise-btn" onclick="changeColor('demo11', 'blue')">Blue!</button>
+                    <!-- Lesson 11: Hex Colors -->
+                    <div class="lesson-card" data-lesson="11">
+                        <h3>Lesson 11: Hex Colors!</h3>
+                        <div class="lesson-content">
+                            <div class="explanation">
+                                <h4>📚 What you'll learn:</h4>
+                                <p>Hex colors use numbers and letters! They start with # and are very precise.</p>
+                                <div class="code-example">
+                                    <h5>💡 Example:</h5>
+                                    <pre><code>background-color: #ff0000;</code></pre>
+                                    <p>This makes red! (#ff0000 = red)</p>
+                                </div>
+                            </div>
+                            
+                            <div class="coding-area">
+                                <h4>✏️ Your Turn - Write CSS Code:</h4>
+                                <div class="code-editor">
+                                    <textarea id="code11" placeholder="Write your CSS code here..."></textarea>
+                                </div>
+                                <button class="run-btn" onclick="runCode(11)">🎯 Run My Code!</button>
+                                <div class="result-area">
+                                    <div class="demo-box" id="result11">Make me blue!</div>
+                                </div>
+                                <div class="hint-area" id="hint11">
+                                    <button class="hint-btn" onclick="showHint(11)">💡 Need Help?</button>
+                                    <div class="hint-content" id="hintContent11" style="display: none;">
+                                        <p>Try: <code>#00ff00</code> for green or <code>#ffff00</code> for yellow</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="exercise-card" data-exercise="12">
-                        <h3>Exercise 12: Green Color</h3>
-                        <p>Make it green!</p>
-                        <div class="demo-box" id="demo12">Make me green!</div>
-                        <button class="exercise-btn" onclick="changeColor('demo12', 'green')">Green!</button>
-                    </div>
-
-                    <div class="exercise-card" data-exercise="13">
-                        <h3>Exercise 13: Yellow Color</h3>
-                        <p>Make it yellow!</p>
-                        <div class="demo-box" id="demo13">Make me yellow!</div>
-                        <button class="exercise-btn" onclick="changeColor('demo13', 'yellow')">Yellow!</button>
-                    </div>
-
-                    <div class="exercise-card" data-exercise="14">
-                        <h3>Exercise 14: Purple Color</h3>
-                        <p>Make it purple!</p>
-                        <div class="demo-box" id="demo14">Make me purple!</div>
-                        <button class="exercise-btn" onclick="changeColor('demo14', 'purple')">Purple!</button>
-                    </div>
-
-                    <div class="exercise-card" data-exercise="15">
-                        <h3>Exercise 15: Orange Color</h3>
-                        <p>Make it orange!</p>
-                        <div class="demo-box" id="demo15">Make me orange!</div>
-                        <button class="exercise-btn" onclick="changeColor('demo15', 'orange')">Orange!</button>
-                    </div>
-
-                    <div class="exercise-card" data-exercise="16">
-                        <h3>Exercise 16: Pink Color</h3>
-                        <p>Make it pink!</p>
-                        <div class="demo-box" id="demo16">Make me pink!</div>
-                        <button class="exercise-btn" onclick="changeColor('demo16', 'pink')">Pink!</button>
+                    <!-- Lesson 12: Color Combinations -->
+                    <div class="lesson-card" data-lesson="12">
+                        <h3>Lesson 12: Color Combinations!</h3>
+                        <div class="lesson-content">
+                            <div class="explanation">
+                                <h4>📚 What you'll learn:</h4>
+                                <p>We can use different colors for background and text to make things look nice!</p>
+                                <div class="code-example">
+                                    <h5>💡 Example:</h5>
+                                    <pre><code>background-color: blue;
+color: white;</code></pre>
+                                    <p>Blue background with white text!</p>
+                                </div>
+                            </div>
+                            
+                            <div class="coding-area">
+                                <h4>✏️ Your Turn - Write CSS Code:</h4>
+                                <div class="code-editor">
+                                    <textarea id="code12" placeholder="Write your CSS code here..."></textarea>
+                                </div>
+                                <button class="run-btn" onclick="runCode(12)">🎯 Run My Code!</button>
+                                <div class="result-area">
+                                    <div class="demo-box" id="result12">Color me nicely!</div>
+                                </div>
+                                <div class="hint-area" id="hint12">
+                                    <button class="hint-btn" onclick="showHint(12)">💡 Need Help?</button>
+                                    <div class="hint-content" id="hintContent12" style="display: none;">
+                                        <p>Try: <code>background-color: purple;</code> and <code>color: white;</code></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Shapes Section -->
-            <section id="shapes" class="section">
-                <h2>🔷 Shapes</h2>
-                <p>Let's create different shapes with CSS!</p>
-                
-                <div class="exercise-grid">
-                    <div class="exercise-card" data-exercise="17">
-                        <h3>Exercise 17: Circle</h3>
-                        <p>Make a circle!</p>
-                        <div class="demo-box" id="demo17">Circle me!</div>
-                        <button class="exercise-btn" onclick="makeCircle('demo17')">Circle!</button>
-                    </div>
-
-                    <div class="exercise-card" data-exercise="18">
-                        <h3>Exercise 18: Square</h3>
-                        <p>Make a square!</p>
-                        <div class="demo-box" id="demo18">Square me!</div>
-                        <button class="exercise-btn" onclick="makeSquare('demo18')">Square!</button>
-                    </div>
-
-                    <div class="exercise-card" data-exercise="19">
-                        <h3>Exercise 19: Rectangle</h3>
-                        <p>Make a rectangle!</p>
-                        <div class="demo-box" id="demo19">Rectangle me!</div>
-                        <button class="exercise-btn" onclick="makeRectangle('demo19')">Rectangle!</button>
-                    </div>
-
-                    <div class="exercise-card" data-exercise="20">
-                        <h3>Exercise 20: Triangle</h3>
-                        <p>Make a triangle!</p>
-                        <div class="demo-box" id="demo20">Triangle me!</div>
-                        <button class="exercise-btn" onclick="makeTriangle('demo20')">Triangle!</button>
-                    </div>
-
-                    <div class="exercise-card" data-exercise="21">
-                        <h3>Exercise 21: Heart Shape</h3>
-                        <p>Make a heart!</p>
-                        <div class="demo-box" id="demo21">Heart me!</div>
-                        <button class="exercise-btn" onclick="makeHeart('demo21')">Heart!</button>
-                    </div>
-
-                    <div class="exercise-card" data-exercise="22">
-                        <h3>Exercise 22: Star Shape</h3>
-                        <p>Make a star!</p>
-                        <div class="demo-box" id="demo22">Star me!</div>
-                        <button class="exercise-btn" onclick="makeStar('demo22')">Star!</button>
-                    </div>
-
-                    <div class="exercise-card" data-exercise="23">
-                        <h3>Exercise 23: Diamond Shape</h3>
-                        <p>Make a diamond!</p>
-                        <div class="demo-box" id="demo23">Diamond me!</div>
-                        <button class="exercise-btn" onclick="makeDiamond('demo23')">Diamond!</button>
-                    </div>
-
-                    <div class="exercise-card" data-exercise="24">
-                        <h3>Exercise 24: Oval Shape</h3>
-                        <p>Make an oval!</p>
-                        <div class="demo-box" id="demo24">Oval me!</div>
-                        <button class="exercise-btn" onclick="makeOval('demo24')">Oval!</button>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Text Section -->
+            <!-- Text Styling Section -->
             <section id="text" class="section">
-                <h2>📝 Text Styling</h2>
-                <p>Let's make text look amazing!</p>
+                <h2>📝 Text Styling - Make Text Beautiful!</h2>
+                <p>Let's learn how to make text look amazing!</p>
                 
-                <div class="exercise-grid">
-                    <div class="exercise-card" data-exercise="25">
-                        <h3>Exercise 25: Font Family</h3>
-                        <p>Change the font style!</p>
-                        <div class="demo-box" id="demo25">Change my font!</div>
-                        <button class="exercise-btn" onclick="changeFont('demo25', 'cursive')">Cursive!</button>
-                        <button class="exercise-btn" onclick="changeFont('demo25', 'monospace')">Monospace!</button>
+                <div class="lesson-grid">
+                    <!-- Lesson 13: Font Families -->
+                    <div class="lesson-card" data-lesson="13">
+                        <h3>Lesson 13: Different Font Styles!</h3>
+                        <div class="lesson-content">
+                            <div class="explanation">
+                                <h4>📚 What you'll learn:</h4>
+                                <p>We can change how letters look using the <code>font-family</code> property!</p>
+                                <div class="code-example">
+                                    <h5>💡 Example:</h5>
+                                    <pre><code>font-family: cursive;</code></pre>
+                                    <p>This makes text look fancy and curly!</p>
+                                </div>
+                            </div>
+                            
+                            <div class="coding-area">
+                                <h4>✏️ Your Turn - Write CSS Code:</h4>
+                                <div class="code-editor">
+                                    <textarea id="code13" placeholder="Write your CSS code here..."></textarea>
+                                </div>
+                                <button class="run-btn" onclick="runCode(13)">🎯 Run My Code!</button>
+                                <div class="result-area">
+                                    <div class="demo-box" id="result13">Make me fancy!</div>
+                                </div>
+                                <div class="hint-area" id="hint13">
+                                    <button class="hint-btn" onclick="showHint(13)">💡 Need Help?</button>
+                                    <div class="hint-content" id="hintContent13" style="display: none;">
+                                        <p>Try: <code>font-family: monospace;</code> for computer-style text</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="exercise-card" data-exercise="26">
-                        <h3>Exercise 26: Text Shadow</h3>
-                        <p>Add a shadow to text!</p>
-                        <div class="demo-box" id="demo26">Shadow me!</div>
-                        <button class="exercise-btn" onclick="addShadow('demo26')">Add Shadow!</button>
+                    <!-- Lesson 14: Text Shadow -->
+                    <div class="lesson-card" data-lesson="14">
+                        <h3>Lesson 14: Text Shadows!</h3>
+                        <div class="lesson-content">
+                            <div class="explanation">
+                                <h4>📚 What you'll learn:</h4>
+                                <p>We can add shadows to text to make it look like it's floating!</p>
+                                <div class="code-example">
+                                    <h5>💡 Example:</h5>
+                                    <pre><code>text-shadow: 2px 2px 4px black;</code></pre>
+                                    <p>This adds a black shadow!</p>
+                                </div>
+                            </div>
+                            
+                            <div class="coding-area">
+                                <h4>✏️ Your Turn - Write CSS Code:</h4>
+                                <div class="code-editor">
+                                    <textarea id="code14" placeholder="Write your CSS code here..."></textarea>
+                                </div>
+                                <button class="run-btn" onclick="runCode(14)">🎯 Run My Code!</button>
+                                <div class="result-area">
+                                    <div class="demo-box" id="result14">Give me a shadow!</div>
+                                </div>
+                                <div class="hint-area" id="hint14">
+                                    <button class="hint-btn" onclick="showHint(14)">💡 Need Help?</button>
+                                    <div class="hint-content" id="hintContent14" style="display: none;">
+                                        <p>Try: <code>text-shadow: 1px 1px 2px red;</code> for a red shadow</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="exercise-card" data-exercise="27">
-                        <h3>Exercise 27: Letter Spacing</h3>
-                        <p>Space out the letters!</p>
-                        <div class="demo-box" id="demo27">Space me out!</div>
-                        <button class="exercise-btn" onclick="spaceLetters('demo27')">Space Out!</button>
+                    <!-- Lesson 15: Letter Spacing -->
+                    <div class="lesson-card" data-lesson="15">
+                        <h3>Lesson 15: Spacing Letters!</h3>
+                        <div class="lesson-content">
+                            <div class="explanation">
+                                <h4>📚 What you'll learn:</h4>
+                                <p>We can make letters spread out more using <code>letter-spacing</code>!</p>
+                                <div class="code-example">
+                                    <h5>💡 Example:</h5>
+                                    <pre><code>letter-spacing: 5px;</code></pre>
+                                    <p>This spreads letters 5 pixels apart!</p>
+                                </div>
+                            </div>
+                            
+                            <div class="coding-area">
+                                <h4>✏️ Your Turn - Write CSS Code:</h4>
+                                <div class="code-editor">
+                                    <textarea id="code15" placeholder="Write your CSS code here..."></textarea>
+                                </div>
+                                <button class="run-btn" onclick="runCode(15)">🎯 Run My Code!</button>
+                                <div class="result-area">
+                                    <div class="demo-box" id="result15">Space me out!</div>
+                                </div>
+                                <div class="hint-area" id="hint15">
+                                    <button class="hint-btn" onclick="showHint(15)">💡 Need Help?</button>
+                                    <div class="hint-content" id="hintContent15" style="display: none;">
+                                        <p>Try: <code>letter-spacing: 8px;</code> for more space or <code>letter-spacing: 1px;</code> for less</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="exercise-card" data-exercise="28">
-                        <h3>Exercise 28: Line Height</h3>
-                        <p>Change line spacing!</p>
-                        <div class="demo-box" id="demo28">Line me up!</div>
-                        <button class="exercise-btn" onclick="changeLineHeight('demo28')">Line Up!</button>
-                    </div>
-
-                    <div class="exercise-card" data-exercise="29">
-                        <h3>Exercise 29: Text Transform</h3>
-                        <p>Change text to uppercase!</p>
-                        <div class="demo-box" id="demo29">Transform me!</div>
-                        <button class="exercise-btn" onclick="transformText('demo29')">Uppercase!</button>
-                    </div>
-
-                    <div class="exercise-card" data-exercise="30">
-                        <h3>Exercise 30: Text Decoration</h3>
-                        <p>Decorate the text!</p>
-                        <div class="demo-box" id="demo30">Decorate me!</div>
-                        <button class="exercise-btn" onclick="decorateText('demo30')">Decorate!</button>
-                    </div>
-
-                    <div class="exercise-card" data-exercise="31">
-                        <h3>Exercise 31: Word Spacing</h3>
-                        <p>Space out the words!</p>
-                        <div class="demo-box" id="demo31">Word space me!</div>
-                        <button class="exercise-btn" onclick="spaceWords('demo31')">Word Space!</button>
-                    </div>
-
-                    <div class="exercise-card" data-exercise="32">
-                        <h3>Exercise 32: Text Align</h3>
-                        <p>Align text differently!</p>
-                        <div class="demo-box" id="demo32">Align me!</div>
-                        <button class="exercise-btn" onclick="alignText('demo32', 'left')">Left!</button>
-                        <button class="exercise-btn" onclick="alignText('demo32', 'right')">Right!</button>
+                    <!-- Lesson 16: Text Transform -->
+                    <div class="lesson-card" data-lesson="16">
+                        <h3>Lesson 16: Changing Text Case!</h3>
+                        <div class="lesson-content">
+                            <div class="explanation">
+                                <h4>📚 What you'll learn:</h4>
+                                <p>We can make all letters uppercase or lowercase!</p>
+                                <div class="code-example">
+                                    <h5>💡 Example:</h5>
+                                    <pre><code>text-transform: uppercase;</code></pre>
+                                    <p>This makes all letters BIG!</p>
+                                </div>
+                            </div>
+                            
+                            <div class="coding-area">
+                                <h4>✏️ Your Turn - Write CSS Code:</h4>
+                                <div class="code-editor">
+                                    <textarea id="code16" placeholder="Write your CSS code here..."></textarea>
+                                </div>
+                                <button class="run-btn" onclick="runCode(16)">🎯 Run My Code!</button>
+                                <div class="result-area">
+                                    <div class="demo-box" id="result16">Make me BIG!</div>
+                                </div>
+                                <div class="hint-area" id="hint16">
+                                    <button class="hint-btn" onclick="showHint(16)">💡 Need Help?</button>
+                                    <div class="hint-content" id="hintContent16" style="display: none;">
+                                        <p>Try: <code>text-transform: lowercase;</code> for small letters</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
 
             <!-- Layout Section -->
             <section id="layout" class="section">
-                <h2>📐 Layout</h2>
-                <p>Let's arrange things on the page!</p>
+                <h2>📐 Layout - Arrange Things!</h2>
+                <p>Let's learn how to arrange elements on the page!</p>
                 
-                <div class="exercise-grid">
-                    <div class="exercise-card" data-exercise="33">
-                        <h3>Exercise 33: Margin</h3>
-                        <p>Add space around the box!</p>
-                        <div class="demo-box" id="demo33">Margin me!</div>
-                        <button class="exercise-btn" onclick="addMargin('demo33')">Add Margin!</button>
+                <div class="lesson-grid">
+                    <!-- Lesson 17: Width and Height -->
+                    <div class="lesson-card" data-lesson="17">
+                        <h3>Lesson 17: Making Things Bigger!</h3>
+                        <div class="lesson-content">
+                            <div class="explanation">
+                                <h4>📚 What you'll learn:</h4>
+                                <p>We can control how wide and tall things are!</p>
+                                <div class="code-example">
+                                    <h5>💡 Example:</h5>
+                                    <pre><code>width: 200px;
+height: 100px;</code></pre>
+                                    <p>This makes a box 200px wide and 100px tall!</p>
+                                </div>
+                            </div>
+                            
+                            <div class="coding-area">
+                                <h4>✏️ Your Turn - Write CSS Code:</h4>
+                                <div class="code-editor">
+                                    <textarea id="code17" placeholder="Write your CSS code here..."></textarea>
+                                </div>
+                                <button class="run-btn" onclick="runCode(17)">🎯 Run My Code!</button>
+                                <div class="result-area">
+                                    <div class="demo-box" id="result17">Make me bigger!</div>
+                                </div>
+                                <div class="hint-area" id="hint17">
+                                    <button class="hint-btn" onclick="showHint(17)">💡 Need Help?</button>
+                                    <div class="hint-content" id="hintContent17" style="display: none;">
+                                        <p>Try: <code>width: 400px;</code> and <code>height: 200px;</code> for even bigger!</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="exercise-card" data-exercise="34">
-                        <h3>Exercise 34: Padding</h3>
-                        <p>Add space inside the box!</p>
-                        <div class="demo-box" id="demo34">Padding me!</div>
-                        <button class="exercise-btn" onclick="addPadding('demo34')">Add Padding!</button>
+                    <!-- Lesson 18: Margin -->
+                    <div class="lesson-card" data-lesson="18">
+                        <h3>Lesson 18: Adding Space Outside!</h3>
+                        <div class="lesson-content">
+                            <div class="explanation">
+                                <h4>📚 What you'll learn:</h4>
+                                <p>We can add space around elements using <code>margin</code>!</p>
+                                <div class="code-example">
+                                    <h5>💡 Example:</h5>
+                                    <pre><code>margin: 20px;</code></pre>
+                                    <p>This adds 20px of space all around!</p>
+                                </div>
+                            </div>
+                            
+                            <div class="coding-area">
+                                <h4>✏️ Your Turn - Write CSS Code:</h4>
+                                <div class="code-editor">
+                                    <textarea id="code18" placeholder="Write your CSS code here..."></textarea>
+                                </div>
+                                <button class="run-btn" onclick="runCode(18)">🎯 Run My Code!</button>
+                                <div class="result-area">
+                                    <div class="demo-box" id="result18">Add space around me!</div>
+                                </div>
+                                <div class="hint-area" id="hint18">
+                                    <button class="hint-btn" onclick="showHint(18)">💡 Need Help?</button>
+                                    <div class="hint-content" id="hintContent18" style="display: none;">
+                                        <p>Try: <code>margin: 50px;</code> for more space or <code>margin: 10px;</code> for less</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="exercise-card" data-exercise="35">
-                        <h3>Exercise 35: Width</h3>
-                        <p>Make the box wider!</p>
-                        <div class="demo-box" id="demo35">Widen me!</div>
-                        <button class="exercise-btn" onclick="changeWidth('demo35')">Widen!</button>
+                    <!-- Lesson 19: Display -->
+                    <div class="lesson-card" data-lesson="19">
+                        <h3>Lesson 19: How Elements Show!</h3>
+                        <div class="lesson-content">
+                            <div class="explanation">
+                                <h4>📚 What you'll learn:</h4>
+                                <p>We can change how elements are displayed on the page!</p>
+                                <div class="code-example">
+                                    <h5>💡 Example:</h5>
+                                    <pre><code>display: inline-block;</code></pre>
+                                    <p>This makes elements sit side by side!</p>
+                                </div>
+                            </div>
+                            
+                            <div class="coding-area">
+                                <h4>✏️ Your Turn - Write CSS Code:</h4>
+                                <div class="code-editor">
+                                    <textarea id="code19" placeholder="Write your CSS code here..."></textarea>
+                                </div>
+                                <button class="run-btn" onclick="runCode(19)">🎯 Run My Code!</button>
+                                <div class="result-area">
+                                    <div class="demo-box" id="result19">Change how I show!</div>
+                                </div>
+                                <div class="hint-area" id="hint19">
+                                    <button class="hint-btn" onclick="showHint(19)">💡 Need Help?</button>
+                                    <div class="hint-content" id="hintContent19" style="display: none;">
+                                        <p>Try: <code>display: block;</code> for full width or <code>display: none;</code> to hide</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="exercise-card" data-exercise="36">
-                        <h3>Exercise 36: Height</h3>
-                        <p>Make the box taller!</p>
-                        <div class="demo-box" id="demo36">Heighten me!</div>
-                        <button class="exercise-btn" onclick="changeHeight('demo36')">Heighten!</button>
+                    <!-- Lesson 20: Position -->
+                    <div class="lesson-card" data-lesson="20">
+                        <h3>Lesson 20: Moving Elements!</h3>
+                        <div class="lesson-content">
+                            <div class="explanation">
+                                <h4>📚 What you'll learn:</h4>
+                                <p>We can move elements around using <code>position</code>!</p>
+                                <div class="code-example">
+                                    <h5>💡 Example:</h5>
+                                    <pre><code>position: relative;
+left: 50px;</code></pre>
+                                    <p>This moves the element 50px to the right!</p>
+                                </div>
+                            </div>
+                            
+                            <div class="coding-area">
+                                <h4>✏️ Your Turn - Write CSS Code:</h4>
+                                <div class="code-editor">
+                                    <textarea id="code20" placeholder="Write your CSS code here..."></textarea>
+                                </div>
+                                <button class="run-btn" onclick="runCode(20)">🎯 Run My Code!</button>
+                                <div class="result-area">
+                                    <div class="demo-box" id="result20">Move me!</div>
+                                </div>
+                                <div class="hint-area" id="hint20">
+                                    <button class="hint-btn" onclick="showHint(20)">💡 Need Help?</button>
+                                    <div class="hint-content" id="hintContent20" style="display: none;">
+                                        <p>Try: <code>position: relative;</code> and <code>top: 20px;</code> to move down</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Shapes Section -->
+            <section id="shapes" class="section">
+                <h2>🔷 Shapes - Create Cool Shapes!</h2>
+                <p>Let's learn how to create different shapes with CSS!</p>
+                
+                <div class="lesson-grid">
+                    <!-- Lesson 21: Border Radius -->
+                    <div class="lesson-card" data-lesson="21">
+                        <h3>Lesson 21: Making Rounded Corners!</h3>
+                        <div class="lesson-content">
+                            <div class="explanation">
+                                <h4>📚 What you'll learn:</h4>
+                                <p>We can make corners round using <code>border-radius</code>!</p>
+                                <div class="code-example">
+                                    <h5>💡 Example:</h5>
+                                    <pre><code>border-radius: 20px;</code></pre>
+                                    <p>This makes all corners round!</p>
+                                </div>
+                            </div>
+                            
+                            <div class="coding-area">
+                                <h4>✏️ Your Turn - Write CSS Code:</h4>
+                                <div class="code-editor">
+                                    <textarea id="code21" placeholder="Write your CSS code here..."></textarea>
+                                </div>
+                                <button class="run-btn" onclick="runCode(21)">🎯 Run My Code!</button>
+                                <div class="result-area">
+                                    <div class="demo-box" id="result21">Round my corners!</div>
+                                </div>
+                                <div class="hint-area" id="hint21">
+                                    <button class="hint-btn" onclick="showHint(21)">💡 Need Help?</button>
+                                    <div class="hint-content" id="hintContent21" style="display: none;">
+                                        <p>Try: <code>border-radius: 50px;</code> for very round corners!</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="exercise-card" data-exercise="37">
-                        <h3>Exercise 37: Position</h3>
-                        <p>Move the box around!</p>
-                        <div class="demo-box" id="demo37">Position me!</div>
-                        <button class="exercise-btn" onclick="changePosition('demo37')">Move!</button>
+                    <!-- Lesson 22: Circles -->
+                    <div class="lesson-card" data-lesson="22">
+                        <h3>Lesson 22: Making Circles!</h3>
+                        <div class="lesson-content">
+                            <div class="explanation">
+                                <h4>📚 What you'll learn:</h4>
+                                <p>To make a perfect circle, we need equal width, height, and border-radius!</p>
+                                <div class="code-example">
+                                    <h5>💡 Example:</h5>
+                                    <pre><code>width: 100px;
+height: 100px;
+border-radius: 50px;</code></pre>
+                                    <p>This makes a perfect circle!</p>
+                                </div>
+                            </div>
+                            
+                            <div class="coding-area">
+                                <h4>✏️ Your Turn - Write CSS Code:</h4>
+                                <div class="code-editor">
+                                    <textarea id="code22" placeholder="Write your CSS code here..."></textarea>
+                                </div>
+                                <button class="run-btn" onclick="runCode(22)">🎯 Run My Code!</button>
+                                <div class="result-area">
+                                    <div class="demo-box" id="result22">Make me a circle!</div>
+                                </div>
+                                <div class="hint-area" id="hint22">
+                                    <button class="hint-btn" onclick="showHint(22)">💡 Need Help?</button>
+                                    <div class="hint-content" id="hintContent22" style="display: none;">
+                                        <p>Remember: border-radius should be half of width and height!</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="exercise-card" data-exercise="38">
-                        <h3>Exercise 38: Float</h3>
-                        <p>Float the box!</p>
-                        <div class="demo-box" id="demo38">Float me!</div>
-                        <button class="exercise-btn" onclick="floatBox('demo38')">Float!</button>
+                    <!-- Lesson 23: Ovals -->
+                    <div class="lesson-card" data-lesson="23">
+                        <h3>Lesson 23: Making Ovals!</h3>
+                        <div class="lesson-content">
+                            <div class="explanation">
+                                <h4>📚 What you'll learn:</h4>
+                                <p>Ovals are like circles but wider or taller!</p>
+                                <div class="code-example">
+                                    <h5>💡 Example:</h5>
+                                    <pre><code>width: 150px;
+height: 80px;
+border-radius: 40px;</code></pre>
+                                    <p>This makes an oval!</p>
+                                </div>
+                            </div>
+                            
+                            <div class="coding-area">
+                                <h4>✏️ Your Turn - Write CSS Code:</h4>
+                                <div class="code-editor">
+                                    <textarea id="code23" placeholder="Write your CSS code here..."></textarea>
+                                </div>
+                                <button class="run-btn" onclick="runCode(23)">🎯 Run My Code!</button>
+                                <div class="result-area">
+                                    <div class="demo-box" id="result23">Make me an oval!</div>
+                                </div>
+                                <div class="hint-area" id="hint23">
+                                    <button class="hint-btn" onclick="showHint(23)">💡 Need Help?</button>
+                                    <div class="hint-content" id="hintContent23" style="display: none;">
+                                        <p>Try different width and height values to make different ovals!</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="exercise-card" data-exercise="39">
-                        <h3>Exercise 39: Display</h3>
-                        <p>Change how the box displays!</p>
-                        <div class="demo-box" id="demo39">Display me!</div>
-                        <button class="exercise-btn" onclick="changeDisplay('demo39')">Display!</button>
-                    </div>
-
-                    <div class="exercise-card" data-exercise="40">
-                        <h3>Exercise 40: Z-Index</h3>
-                        <p>Layer the boxes!</p>
-                        <div class="demo-box" id="demo40">Layer me!</div>
-                        <button class="exercise-btn" onclick="changeZIndex('demo40')">Layer!</button>
+                    <!-- Lesson 24: Custom Shapes -->
+                    <div class="lesson-card" data-lesson="24">
+                        <h3>Lesson 24: Custom Shapes!</h3>
+                        <div class="lesson-content">
+                            <div class="explanation">
+                                <h4>📚 What you'll learn:</h4>
+                                <p>We can create custom shapes by combining different properties!</p>
+                                <div class="code-example">
+                                    <h5>💡 Example:</h5>
+                                    <pre><code>width: 100px;
+height: 100px;
+border-radius: 20px 0px 20px 0px;</code></pre>
+                                    <p>This makes a custom shape!</p>
+                                </div>
+                            </div>
+                            
+                            <div class="coding-area">
+                                <h4>✏️ Your Turn - Write CSS Code:</h4>
+                                <div class="code-editor">
+                                    <textarea id="code24" placeholder="Write your CSS code here..."></textarea>
+                                </div>
+                                <button class="run-btn" onclick="runCode(24)">🎯 Run My Code!</button>
+                                <div class="result-area">
+                                    <div class="demo-box" id="result24">Make me unique!</div>
+                                </div>
+                                <div class="hint-area" id="hint24">
+                                    <button class="hint-btn" onclick="showHint(24)">💡 Need Help?</button>
+                                    <div class="hint-content" id="hintContent24" style="display: none;">
+                                        <p>Try different values for each corner: <code>border-radius: 10px 20px 30px 40px;</code></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
 
             <!-- Animations Section -->
             <section id="animations" class="section">
-                <h2>✨ Animations</h2>
-                <p>Let's make things move and dance!</p>
+                <h2>✨ Animations - Make Things Move!</h2>
+                <p>Let's learn how to make things move and dance!</p>
                 
-                <div class="exercise-grid">
-                    <div class="exercise-card" data-exercise="41">
-                        <h3>Exercise 41: Bounce</h3>
-                        <p>Make it bounce!</p>
-                        <div class="demo-box" id="demo41">Bounce me!</div>
-                        <button class="exercise-btn" onclick="bounceBox('demo41')">Bounce!</button>
+                <div class="lesson-grid">
+                    <!-- Lesson 25: Transitions -->
+                    <div class="lesson-card" data-lesson="25">
+                        <h3>Lesson 25: Smooth Changes!</h3>
+                        <div class="lesson-content">
+                            <div class="explanation">
+                                <h4>📚 What you'll learn:</h4>
+                                <p>We can make changes smooth using <code>transition</code>!</p>
+                                <div class="code-example">
+                                    <h5>💡 Example:</h5>
+                                    <pre><code>transition: all 1s ease;</code></pre>
+                                    <p>This makes all changes smooth over 1 second!</p>
+                                </div>
+                            </div>
+                            
+                            <div class="coding-area">
+                                <h4>✏️ Your Turn - Write CSS Code:</h4>
+                                <div class="code-editor">
+                                    <textarea id="code25" placeholder="Write your CSS code here..."></textarea>
+                                </div>
+                                <button class="run-btn" onclick="runCode(25)">🎯 Run My Code!</button>
+                                <div class="result-area">
+                                    <div class="demo-box" id="result25">Make me smooth!</div>
+                                </div>
+                                <div class="hint-area" id="hint25">
+                                    <button class="hint-btn" onclick="showHint(25)">💡 Need Help?</button>
+                                    <div class="hint-content" id="hintContent25" style="display: none;">
+                                        <p>Try: <code>transition: background-color 1s ease;</code> for just color changes</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="exercise-card" data-exercise="42">
-                        <h3>Exercise 42: Spin</h3>
-                        <p>Make it spin!</p>
-                        <div class="demo-box" id="demo42">Spin me!</div>
-                        <button class="exercise-btn" onclick="spinBox('demo42')">Spin!</button>
+                    <!-- Lesson 26: Hover Effects -->
+                    <div class="lesson-card" data-lesson="26">
+                        <h3>Lesson 26: Hover Effects!</h3>
+                        <div class="lesson-content">
+                            <div class="explanation">
+                                <h4>📚 What you'll learn:</h4>
+                                <p>We can make things change when you hover over them!</p>
+                                <div class="code-example">
+                                    <h5>💡 Example:</h5>
+                                    <pre><code>background-color: blue;
+transition: all 0.5s ease;</code></pre>
+                                    <p>This will change smoothly when you hover!</p>
+                                </div>
+                            </div>
+                            
+                            <div class="coding-area">
+                                <h4>✏️ Your Turn - Write CSS Code:</h4>
+                                <div class="code-editor">
+                                    <textarea id="code26" placeholder="Write your CSS code here..."></textarea>
+                                </div>
+                                <button class="run-btn" onclick="runCode(26)">🎯 Run My Code!</button>
+                                <div class="result-area">
+                                    <div class="demo-box" id="result26" onmouseover="this.style.backgroundColor='red'" onmouseout="this.style.backgroundColor='green'">Hover over me!</div>
+                                </div>
+                                <div class="hint-area" id="hint26">
+                                    <button class="hint-btn" onclick="showHint(26)">💡 Need Help?</button>
+                                    <div class="hint-content" id="hintContent26" style="display: none;">
+                                        <p>Try different colors and transition speeds!</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="exercise-card" data-exercise="43">
-                        <h3>Exercise 43: Fade</h3>
-                        <p>Make it fade!</p>
-                        <div class="demo-box" id="demo43">Fade me!</div>
-                        <button class="exercise-btn" onclick="fadeBox('demo43')">Fade!</button>
+                    <!-- Lesson 27: Transform Scale -->
+                    <div class="lesson-card" data-lesson="27">
+                        <h3>Lesson 27: Making Things Bigger!</h3>
+                        <div class="lesson-content">
+                            <div class="explanation">
+                                <h4>📚 What you'll learn:</h4>
+                                <p>We can make things bigger or smaller using <code>transform: scale</code>!</p>
+                                <div class="code-example">
+                                    <h5>💡 Example:</h5>
+                                    <pre><code>transform: scale(1.5);</code></pre>
+                                    <p>This makes the element 1.5 times bigger!</p>
+                                </div>
+                            </div>
+                            
+                            <div class="coding-area">
+                                <h4>✏️ Your Turn - Write CSS Code:</h4>
+                                <div class="code-editor">
+                                    <textarea id="code27" placeholder="Write your CSS code here..."></textarea>
+                                </div>
+                                <button class="run-btn" onclick="runCode(27)">🎯 Run My Code!</button>
+                                <div class="result-area">
+                                    <div class="demo-box" id="result27">Make me bigger!</div>
+                                </div>
+                                <div class="hint-area" id="hint27">
+                                    <button class="hint-btn" onclick="showHint(27)">💡 Need Help?</button>
+                                    <div class="hint-content" id="hintContent27" style="display: none;">
+                                        <p>Try: <code>transform: scale(2);</code> for twice as big or <code>transform: scale(0.5);</code> for half size</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="exercise-card" data-exercise="44">
-                        <h3>Exercise 44: Slide</h3>
-                        <p>Make it slide!</p>
-                        <div class="demo-box" id="demo44">Slide me!</div>
-                        <button class="exercise-btn" onclick="slideBox('demo44')">Slide!</button>
+                    <!-- Lesson 28: Transform Rotate -->
+                    <div class="lesson-card" data-lesson="28">
+                        <h3>Lesson 28: Rotating Things!</h3>
+                        <div class="lesson-content">
+                            <div class="explanation">
+                                <h4>📚 What you'll learn:</h4>
+                                <p>We can rotate elements using <code>transform: rotate</code>!</p>
+                                <div class="code-example">
+                                    <h5>💡 Example:</h5>
+                                    <pre><code>transform: rotate(45deg);</code></pre>
+                                    <p>This rotates the element 45 degrees!</p>
+                                </div>
+                            </div>
+                            
+                            <div class="coding-area">
+                                <h4>✏️ Your Turn - Write CSS Code:</h4>
+                                <div class="code-editor">
+                                    <textarea id="code28" placeholder="Write your CSS code here..."></textarea>
+                                </div>
+                                <button class="run-btn" onclick="runCode(28)">🎯 Run My Code!</button>
+                                <div class="result-area">
+                                    <div class="demo-box" id="result28">Rotate me!</div>
+                                </div>
+                                <div class="hint-area" id="hint28">
+                                    <button class="hint-btn" onclick="showHint(28)">💡 Need Help?</button>
+                                    <div class="hint-content" id="hintContent28" style="display: none;">
+                                        <p>Try: <code>transform: rotate(90deg);</code> for a quarter turn or <code>transform: rotate(180deg);</code> for upside down</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="exercise-card" data-exercise="45">
-                        <h3>Exercise 45: Scale</h3>
-                        <p>Make it bigger and smaller!</p>
-                        <div class="demo-box" id="demo45">Scale me!</div>
-                        <button class="exercise-btn" onclick="scaleBox('demo45')">Scale!</button>
+                    <!-- Lesson 29: Combining Transforms -->
+                    <div class="lesson-card" data-lesson="29">
+                        <h3>Lesson 29: Multiple Transforms!</h3>
+                        <div class="lesson-content">
+                            <div class="explanation">
+                                <h4>📚 What you'll learn:</h4>
+                                <p>We can combine multiple transforms together!</p>
+                                <div class="code-example">
+                                    <h5>💡 Example:</h5>
+                                    <pre><code>transform: scale(1.2) rotate(15deg);</code></pre>
+                                    <p>This makes it bigger AND rotates it!</p>
+                                </div>
+                            </div>
+                            
+                            <div class="coding-area">
+                                <h4>✏️ Your Turn - Write CSS Code:</h4>
+                                <div class="code-editor">
+                                    <textarea id="code29" placeholder="Write your CSS code here..."></textarea>
+                                </div>
+                                <button class="run-btn" onclick="runCode(29)">🎯 Run My Code!</button>
+                                <div class="result-area">
+                                    <div class="demo-box" id="result29">Transform me completely!</div>
+                                </div>
+                                <div class="hint-area" id="hint29">
+                                    <button class="hint-btn" onclick="showHint(29)">💡 Need Help?</button>
+                                    <div class="hint-content" id="hintContent29" style="display: none;">
+                                        <p>Try: <code>transform: scale(0.8) rotate(-30deg);</code> for smaller and rotated</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="exercise-card" data-exercise="46">
-                        <h3>Exercise 46: Rotate</h3>
-                        <p>Rotate it!</p>
-                        <div class="demo-box" id="demo46">Rotate me!</div>
-                        <button class="exercise-btn" onclick="rotateBox('demo46')">Rotate!</button>
-                    </div>
-
-                    <div class="exercise-card" data-exercise="47">
-                        <h3>Exercise 47: Pulse</h3>
-                        <p>Make it pulse!</p>
-                        <div class="demo-box" id="demo47">Pulse me!</div>
-                        <button class="exercise-btn" onclick="pulseBox('demo47')">Pulse!</button>
-                    </div>
-
-                    <div class="exercise-card" data-exercise="48">
-                        <h3>Exercise 48: Wiggle</h3>
-                        <p>Make it wiggle!</p>
-                        <div class="demo-box" id="demo48">Wiggle me!</div>
-                        <button class="exercise-btn" onclick="wiggleBox('demo48')">Wiggle!</button>
-                    </div>
-
-                    <div class="exercise-card" data-exercise="49">
-                        <h3>Exercise 49: Glow</h3>
-                        <p>Make it glow!</p>
-                        <div class="demo-box" id="demo49">Glow me!</div>
-                        <button class="exercise-btn" onclick="glowBox('demo49')">Glow!</button>
-                    </div>
-
-                    <div class="exercise-card" data-exercise="50">
-                        <h3>Exercise 50: Party Time!</h3>
-                        <p>All animations together!</p>
-                        <div class="demo-box" id="demo50">Party!</div>
-                        <button class="exercise-btn" onclick="partyTime('demo50')">Party!</button>
+                    <!-- Lesson 30: Animation Keyframes -->
+                    <div class="lesson-card" data-lesson="30">
+                        <h3>Lesson 30: Creating Animations!</h3>
+                        <div class="lesson-content">
+                            <div class="explanation">
+                                <h4>📚 What you'll learn:</h4>
+                                <p>We can create animations that repeat using <code>animation</code>!</p>
+                                <div class="code-example">
+                                    <h5>💡 Example:</h5>
+                                    <pre><code>animation: pulse 2s infinite;</code></pre>
+                                    <p>This creates a pulsing animation!</p>
+                                </div>
+                            </div>
+                            
+                            <div class="coding-area">
+                                <h4>✏️ Your Turn - Write CSS Code:</h4>
+                                <div class="code-editor">
+                                    <textarea id="code30" placeholder="Write your CSS code here..."></textarea>
+                                </div>
+                                <button class="run-btn" onclick="runCode(30)">🎯 Run My Code!</button>
+                                <div class="result-area">
+                                    <div class="demo-box" id="result30">Animate me!</div>
+                                </div>
+                                <div class="hint-area" id="hint30">
+                                    <button class="hint-btn" onclick="showHint(30)">💡 Need Help?</button>
+                                    <div class="hint-content" id="hintContent30" style="display: none;">
+                                        <p>Try: <code>animation: spin 3s infinite;</code> for spinning</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -437,15 +1085,15 @@
         <div id="achievementModal" class="modal">
             <div class="modal-content">
                 <span class="close">&times;</span>
-                <h2>🎉 Congratulations! 🎉</h2>
-                <p id="achievementText">You completed an exercise!</p>
+                <h2>🎉 Great Job! 🎉</h2>
+                <p id="achievementText">You wrote CSS code successfully!</p>
                 <div class="achievement-icon">🏆</div>
             </div>
         </div>
 
         <!-- Footer -->
         <footer class="footer">
-            <p>🌟 Great job learning CSS! Keep practicing! 🌟</p>
+            <p>🌟 Keep coding and learning! You're doing amazing! 🌟</p>
         </footer>
     </div>
 

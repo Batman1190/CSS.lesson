@@ -1,9 +1,9 @@
-// CSS Fun Learning - Interactive JavaScript for Kids!
+// CSS Coding School for Kids - Interactive Learning JavaScript
 
 // Global variables
-let completedExercises = new Set();
-let currentExercise = 1;
-const totalExercises = 50;
+let completedLessons = new Set();
+let currentLesson = 1;
+const totalLessons = 30;
 
 // Initialize the application
 document.addEventListener('DOMContentLoaded', function() {
@@ -11,12 +11,13 @@ document.addEventListener('DOMContentLoaded', function() {
     setupNavigation();
     setupModal();
     loadProgress();
+    setupCodeEditors();
 });
 
 // Initialize the application
 function initializeApp() {
     updateProgress();
-    console.log('🎨 CSS Fun Learning initialized!');
+    console.log('🎨 CSS Coding School initialized!');
 }
 
 // Setup navigation between sections
@@ -55,34 +56,83 @@ function setupModal() {
     });
 }
 
+// Setup code editors with syntax highlighting
+function setupCodeEditors() {
+    const textareas = document.querySelectorAll('.code-editor textarea');
+    textareas.forEach(textarea => {
+        textarea.addEventListener('input', function() {
+            // Basic syntax highlighting simulation
+            highlightSyntax(this);
+        });
+        
+        textarea.addEventListener('keydown', function(e) {
+            // Auto-indentation
+            if (e.key === 'Enter') {
+                const cursorPos = this.selectionStart;
+                const textBefore = this.value.substring(0, cursorPos);
+                const lines = textBefore.split('\n');
+                const currentLine = lines[lines.length - 1];
+                const indent = currentLine.match(/^(\s*)/)[1];
+                
+                if (currentLine.includes('{')) {
+                    setTimeout(() => {
+                        const newCursorPos = this.selectionStart;
+                        this.value = this.value.substring(0, newCursorPos) + '\n' + indent + '    ' + this.value.substring(newCursorPos);
+                        this.setSelectionRange(newCursorPos + indent.length + 5, newCursorPos + indent.length + 5);
+                    }, 0);
+                }
+            }
+        });
+    });
+}
+
+// Basic syntax highlighting
+function highlightSyntax(textarea) {
+    // This is a simplified version - in a real app you'd use a proper syntax highlighter
+    const value = textarea.value;
+    const lines = value.split('\n');
+    
+    // Add visual feedback for common CSS properties
+    if (value.includes('background-color') || value.includes('color') || value.includes('font-size')) {
+        textarea.style.borderColor = '#4caf50';
+    } else if (value.includes('px') || value.includes('deg') || value.includes('s')) {
+        textarea.style.borderColor = '#ff9800';
+    } else {
+        textarea.style.borderColor = '#4ecdc4';
+    }
+}
+
 // Show achievement modal
-function showAchievement(exerciseNumber) {
+function showAchievement(lessonNumber) {
     const modal = document.getElementById('achievementModal');
     const achievementText = document.getElementById('achievementText');
     
-    achievementText.textContent = `You completed Exercise ${exerciseNumber}! Great job! 🎉`;
+    achievementText.textContent = `You completed Lesson ${lessonNumber}! You're learning to code! 🎉`;
     modal.style.display = 'block';
     
-    // Auto-hide after 3 seconds
+    // Auto-hide after 4 seconds
     setTimeout(() => {
         modal.style.display = 'none';
-    }, 3000);
+    }, 4000);
 }
 
-// Mark exercise as completed
-function markExerciseCompleted(exerciseNumber) {
-    if (!completedExercises.has(exerciseNumber)) {
-        completedExercises.add(exerciseNumber);
+// Mark lesson as completed
+function markLessonCompleted(lessonNumber) {
+    if (!completedLessons.has(lessonNumber)) {
+        completedLessons.add(lessonNumber);
         updateProgress();
         saveProgress();
         
-        // Mark the exercise card as completed
-        const exerciseCard = document.querySelector(`[data-exercise="${exerciseNumber}"]`);
-        if (exerciseCard) {
-            exerciseCard.classList.add('completed');
+        // Mark the lesson card as completed
+        const lessonCard = document.querySelector(`[data-lesson="${lessonNumber}"]`);
+        if (lessonCard) {
+            lessonCard.classList.add('completed');
         }
         
-        showAchievement(exerciseNumber);
+        // Play celebration sound
+        playCelebrationSound();
+        
+        showAchievement(lessonNumber);
     }
 }
 
@@ -91,454 +141,425 @@ function updateProgress() {
     const progressFill = document.getElementById('progressFill');
     const progressText = document.getElementById('progressText');
     
-    const completedCount = completedExercises.size;
-    const percentage = (completedCount / totalExercises) * 100;
+    const completedCount = completedLessons.size;
+    const percentage = (completedCount / totalLessons) * 100;
     
     progressFill.style.width = percentage + '%';
-    progressText.textContent = `${completedCount}/${totalExercises} Complete`;
+    progressText.textContent = `${completedCount}/${totalLessons} Lessons Complete`;
 }
 
 // Save progress to localStorage
 function saveProgress() {
-    localStorage.setItem('cssLearningProgress', JSON.stringify(Array.from(completedExercises)));
+    localStorage.setItem('cssCodingProgress', JSON.stringify(Array.from(completedLessons)));
 }
 
 // Load progress from localStorage
 function loadProgress() {
-    const savedProgress = localStorage.getItem('cssLearningProgress');
+    const savedProgress = localStorage.getItem('cssCodingProgress');
     if (savedProgress) {
-        completedExercises = new Set(JSON.parse(savedProgress));
+        completedLessons = new Set(JSON.parse(savedProgress));
         updateProgress();
         
-        // Mark completed exercises
-        completedExercises.forEach(exerciseNumber => {
-            const exerciseCard = document.querySelector(`[data-exercise="${exerciseNumber}"]`);
-            if (exerciseCard) {
-                exerciseCard.classList.add('completed');
+        // Mark completed lessons
+        completedLessons.forEach(lessonNumber => {
+            const lessonCard = document.querySelector(`[data-lesson="${lessonNumber}"]`);
+            if (lessonCard) {
+                lessonCard.classList.add('completed');
             }
         });
     }
 }
 
-// ==================== EXERCISE FUNCTIONS ====================
-
-// Exercise 1: Change Background Color
-function changeBackground(elementId) {
-    const element = document.getElementById(elementId);
-    const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#feca57', '#ff9ff3'];
-    const randomColor = colors[Math.floor(Math.random() * colors.length)];
-    element.style.backgroundColor = randomColor;
-    markExerciseCompleted(1);
-}
-
-// Exercise 2: Change Size
-function changeSize(elementId, size) {
-    const element = document.getElementById(elementId);
-    if (size === 'big') {
-        element.style.fontSize = '2rem';
-        element.style.transform = 'scale(1.2)';
+// Show hint
+function showHint(lessonNumber) {
+    const hintContent = document.getElementById(`hintContent${lessonNumber}`);
+    if (hintContent.style.display === 'none' || hintContent.style.display === '') {
+        hintContent.style.display = 'block';
     } else {
-        element.style.fontSize = '0.8rem';
-        element.style.transform = 'scale(0.8)';
+        hintContent.style.display = 'none';
     }
-    markExerciseCompleted(2);
 }
 
-// Exercise 3: Make Bold
-function makeBold(elementId) {
-    const element = document.getElementById(elementId);
-    element.style.fontWeight = 'bold';
-    markExerciseCompleted(3);
-}
-
-// Exercise 4: Make Italic
-function makeItalic(elementId) {
-    const element = document.getElementById(elementId);
-    element.style.fontStyle = 'italic';
-    markExerciseCompleted(4);
-}
-
-// Exercise 5: Make Underline
-function makeUnderline(elementId) {
-    const element = document.getElementById(elementId);
-    element.style.textDecoration = 'underline';
-    markExerciseCompleted(5);
-}
-
-// Exercise 6: Center Text
-function centerText(elementId) {
-    const element = document.getElementById(elementId);
-    element.style.textAlign = 'center';
-    markExerciseCompleted(6);
-}
-
-// Exercise 7: Hide and Show Text
-function hideText(elementId) {
-    const element = document.getElementById(elementId);
-    element.style.display = 'none';
-    markExerciseCompleted(7);
-}
-
-function showText(elementId) {
-    const element = document.getElementById(elementId);
-    element.style.display = 'flex';
-    markExerciseCompleted(7);
-}
-
-// Exercise 8: Add Border
-function addBorder(elementId) {
-    const element = document.getElementById(elementId);
-    element.style.border = '5px solid #ff6b6b';
-    element.style.borderRadius = '15px';
-    markExerciseCompleted(8);
-}
-
-// Exercise 9: Rainbow Colors
-function rainbowColors(elementId) {
-    const element = document.getElementById(elementId);
-    element.classList.add('rainbow');
-    markExerciseCompleted(9);
-}
-
-// Exercise 10-16: Change Colors
-function changeColor(elementId, color) {
-    const element = document.getElementById(elementId);
-    element.style.backgroundColor = color;
-    markExerciseCompleted(parseInt(elementId.replace('demo', '')));
-}
-
-// Exercise 17: Make Circle
-function makeCircle(elementId) {
-    const element = document.getElementById(elementId);
-    element.classList.add('circle');
-    markExerciseCompleted(17);
-}
-
-// Exercise 18: Make Square
-function makeSquare(elementId) {
-    const element = document.getElementById(elementId);
-    element.classList.add('square');
-    markExerciseCompleted(18);
-}
-
-// Exercise 19: Make Rectangle
-function makeRectangle(elementId) {
-    const element = document.getElementById(elementId);
-    element.classList.add('rectangle');
-    markExerciseCompleted(19);
-}
-
-// Exercise 20: Make Triangle
-function makeTriangle(elementId) {
-    const element = document.getElementById(elementId);
-    element.classList.add('triangle');
-    markExerciseCompleted(20);
-}
-
-// Exercise 21: Make Heart
-function makeHeart(elementId) {
-    const element = document.getElementById(elementId);
-    element.classList.add('heart');
-    markExerciseCompleted(21);
-}
-
-// Exercise 22: Make Star
-function makeStar(elementId) {
-    const element = document.getElementById(elementId);
-    element.classList.add('star');
-    markExerciseCompleted(22);
-}
-
-// Exercise 23: Make Diamond
-function makeDiamond(elementId) {
-    const element = document.getElementById(elementId);
-    element.classList.add('diamond');
-    markExerciseCompleted(23);
-}
-
-// Exercise 24: Make Oval
-function makeOval(elementId) {
-    const element = document.getElementById(elementId);
-    element.classList.add('oval');
-    markExerciseCompleted(24);
-}
-
-// Exercise 25: Change Font
-function changeFont(elementId, fontFamily) {
-    const element = document.getElementById(elementId);
-    element.style.fontFamily = fontFamily;
-    markExerciseCompleted(25);
-}
-
-// Exercise 26: Add Shadow
-function addShadow(elementId) {
-    const element = document.getElementById(elementId);
-    element.style.textShadow = '3px 3px 6px rgba(0,0,0,0.5)';
-    markExerciseCompleted(26);
-}
-
-// Exercise 27: Space Letters
-function spaceLetters(elementId) {
-    const element = document.getElementById(elementId);
-    element.style.letterSpacing = '5px';
-    markExerciseCompleted(27);
-}
-
-// Exercise 28: Change Line Height
-function changeLineHeight(elementId) {
-    const element = document.getElementById(elementId);
-    element.style.lineHeight = '2';
-    markExerciseCompleted(28);
-}
-
-// Exercise 29: Transform Text
-function transformText(elementId) {
-    const element = document.getElementById(elementId);
-    element.style.textTransform = 'uppercase';
-    markExerciseCompleted(29);
-}
-
-// Exercise 30: Decorate Text
-function decorateText(elementId) {
-    const element = document.getElementById(elementId);
-    element.style.textDecoration = 'line-through';
-    markExerciseCompleted(30);
-}
-
-// Exercise 31: Space Words
-function spaceWords(elementId) {
-    const element = document.getElementById(elementId);
-    element.style.wordSpacing = '10px';
-    markExerciseCompleted(31);
-}
-
-// Exercise 32: Align Text
-function alignText(elementId, alignment) {
-    const element = document.getElementById(elementId);
-    element.style.textAlign = alignment;
-    markExerciseCompleted(32);
-}
-
-// Exercise 33: Add Margin
-function addMargin(elementId) {
-    const element = document.getElementById(elementId);
-    element.style.margin = '20px';
-    markExerciseCompleted(33);
-}
-
-// Exercise 34: Add Padding
-function addPadding(elementId) {
-    const element = document.getElementById(elementId);
-    element.style.padding = '30px';
-    markExerciseCompleted(34);
-}
-
-// Exercise 35: Change Width
-function changeWidth(elementId) {
-    const element = document.getElementById(elementId);
-    element.style.width = '300px';
-    markExerciseCompleted(35);
-}
-
-// Exercise 36: Change Height
-function changeHeight(elementId) {
-    const element = document.getElementById(elementId);
-    element.style.height = '120px';
-    markExerciseCompleted(36);
-}
-
-// Exercise 37: Change Position
-function changePosition(elementId) {
-    const element = document.getElementById(elementId);
-    element.style.position = 'relative';
-    element.style.left = '50px';
-    element.style.top = '20px';
-    markExerciseCompleted(37);
-}
-
-// Exercise 38: Float Box
-function floatBox(elementId) {
-    const element = document.getElementById(elementId);
-    element.style.float = 'left';
-    markExerciseCompleted(38);
-}
-
-// Exercise 39: Change Display
-function changeDisplay(elementId) {
-    const element = document.getElementById(elementId);
-    element.style.display = 'inline-block';
-    markExerciseCompleted(39);
-}
-
-// Exercise 40: Change Z-Index
-function changeZIndex(elementId) {
-    const element = document.getElementById(elementId);
-    element.style.position = 'relative';
-    element.style.zIndex = '10';
-    markExerciseCompleted(40);
-}
-
-// Exercise 41: Bounce Animation
-function bounceBox(elementId) {
-    const element = document.getElementById(elementId);
-    element.classList.add('bounce-animation');
-    setTimeout(() => {
-        element.classList.remove('bounce-animation');
-    }, 2000);
-    markExerciseCompleted(41);
-}
-
-// Exercise 42: Spin Animation
-function spinBox(elementId) {
-    const element = document.getElementById(elementId);
-    element.classList.add('spin-animation');
-    setTimeout(() => {
-        element.classList.remove('spin-animation');
-    }, 2000);
-    markExerciseCompleted(42);
-}
-
-// Exercise 43: Fade Animation
-function fadeBox(elementId) {
-    const element = document.getElementById(elementId);
-    element.style.transition = 'opacity 1s ease';
-    element.style.opacity = '0.3';
-    setTimeout(() => {
-        element.style.opacity = '1';
-    }, 1000);
-    markExerciseCompleted(43);
-}
-
-// Exercise 44: Slide Animation
-function slideBox(elementId) {
-    const element = document.getElementById(elementId);
-    element.style.transition = 'transform 1s ease';
-    element.style.transform = 'translateX(100px)';
-    setTimeout(() => {
-        element.style.transform = 'translateX(0)';
-    }, 1000);
-    markExerciseCompleted(44);
-}
-
-// Exercise 45: Scale Animation
-function scaleBox(elementId) {
-    const element = document.getElementById(elementId);
-    element.style.transition = 'transform 1s ease';
-    element.style.transform = 'scale(1.5)';
-    setTimeout(() => {
-        element.style.transform = 'scale(1)';
-    }, 1000);
-    markExerciseCompleted(45);
-}
-
-// Exercise 46: Rotate Animation
-function rotateBox(elementId) {
-    const element = document.getElementById(elementId);
-    element.style.transition = 'transform 1s ease';
-    element.style.transform = 'rotate(180deg)';
-    setTimeout(() => {
-        element.style.transform = 'rotate(0deg)';
-    }, 1000);
-    markExerciseCompleted(46);
-}
-
-// Exercise 47: Pulse Animation
-function pulseBox(elementId) {
-    const element = document.getElementById(elementId);
-    element.classList.add('pulse-animation');
-    setTimeout(() => {
-        element.classList.remove('pulse-animation');
-    }, 2000);
-    markExerciseCompleted(47);
-}
-
-// Exercise 48: Wiggle Animation
-function wiggleBox(elementId) {
-    const element = document.getElementById(elementId);
-    element.classList.add('wiggle-animation');
-    setTimeout(() => {
-        element.classList.remove('wiggle-animation');
-    }, 2000);
-    markExerciseCompleted(48);
-}
-
-// Exercise 49: Glow Effect
-function glowBox(elementId) {
-    const element = document.getElementById(elementId);
-    element.classList.add('glow-effect');
-    setTimeout(() => {
-        element.classList.remove('glow-effect');
-    }, 3000);
-    markExerciseCompleted(49);
-}
-
-// Exercise 50: Party Time - All animations together!
-function partyTime(elementId) {
-    const element = document.getElementById(elementId);
+// Run user's CSS code
+function runCode(lessonNumber) {
+    const codeTextarea = document.getElementById(`code${lessonNumber}`);
+    const resultElement = document.getElementById(`result${lessonNumber}`);
+    const userCode = codeTextarea.value.trim();
     
-    // Apply multiple effects
-    element.classList.add('rainbow', 'bounce-animation', 'pulse-animation');
-    element.style.transform = 'rotate(360deg) scale(1.2)';
-    element.style.transition = 'all 2s ease';
+    if (!userCode) {
+        showError(resultElement, "Please write some CSS code first!");
+        return;
+    }
     
-    // Add confetti effect
-    createConfetti();
-    
-    setTimeout(() => {
-        element.classList.remove('rainbow', 'bounce-animation', 'pulse-animation');
-        element.style.transform = 'rotate(0deg) scale(1)';
-    }, 3000);
-    
-    markExerciseCompleted(50);
-}
-
-// Create confetti effect for party time
-function createConfetti() {
-    const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#feca57', '#ff9ff3'];
-    
-    for (let i = 0; i < 50; i++) {
-        setTimeout(() => {
-            const confetti = document.createElement('div');
-            confetti.style.position = 'fixed';
-            confetti.style.width = '10px';
-            confetti.style.height = '10px';
-            confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-            confetti.style.left = Math.random() * window.innerWidth + 'px';
-            confetti.style.top = '-10px';
-            confetti.style.borderRadius = '50%';
-            confetti.style.pointerEvents = 'none';
-            confetti.style.zIndex = '9999';
-            confetti.style.animation = 'confettiFall 3s linear forwards';
-            
-            document.body.appendChild(confetti);
-            
+    try {
+        // Parse and validate CSS
+        const cssRules = parseCSS(userCode);
+        
+        if (cssRules.length === 0) {
+            showError(resultElement, "I don't understand that CSS. Try something like 'background-color: red;'");
+            return;
+        }
+        
+        // Apply CSS to result element and count successful applications
+        const appliedRules = applyCSSToElement(resultElement, cssRules);
+        
+        // Only show success if at least one rule was successfully applied
+        if (appliedRules > 0) {
+            // Show success animation
+            resultElement.classList.add('success-animation');
             setTimeout(() => {
-                confetti.remove();
-            }, 3000);
-        }, i * 50);
+                resultElement.classList.remove('success-animation');
+            }, 600);
+            
+            // Mark lesson as completed
+            markLessonCompleted(lessonNumber);
+            
+            // Provide feedback
+            showSuccess(resultElement, "Great job! Your CSS is working!");
+        } else {
+            // No rules were successfully applied - show error
+            showError(resultElement, "Your CSS syntax looks correct, but the values aren't valid. Check your values!");
+        }
+        
+    } catch (error) {
+        showError(resultElement, "There's an error in your CSS. Check the syntax!");
+        console.log('CSS Error:', error);
     }
 }
 
-// Add confetti animation CSS
-const confettiCSS = `
-@keyframes confettiFall {
-    0% {
-        transform: translateY(-100vh) rotate(0deg);
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(100vh) rotate(720deg);
-        opacity: 0;
-    }
+// Parse CSS code (improved parser with validation)
+function parseCSS(cssCode) {
+    const rules = [];
+    const lines = cssCode.split('\n');
+    
+    lines.forEach(line => {
+        const trimmedLine = line.trim();
+        if (trimmedLine && trimmedLine.includes(':')) {
+            const parts = trimmedLine.split(':');
+            if (parts.length >= 2) {
+                const property = parts[0].trim();
+                const value = parts.slice(1).join(':').trim().replace(/;$/, '');
+                
+                // Validate property name (must be a valid CSS property)
+                if (isValidCSSProperty(property)) {
+                    rules.push({ property, value });
+                }
+            }
+        }
+    });
+    
+    return rules;
 }
-`;
 
-// Inject confetti CSS
-const style = document.createElement('style');
-style.textContent = confettiCSS;
-document.head.appendChild(style);
+// Validate CSS property names
+function isValidCSSProperty(property) {
+    const validProperties = [
+        'background-color', 'color', 'font-size', 'font-weight', 'font-style', 'font-family',
+        'text-decoration', 'text-align', 'text-shadow', 'text-transform', 'letter-spacing',
+        'border', 'border-radius', 'padding', 'margin', 'width', 'height',
+        'display', 'position', 'left', 'top', 'right', 'bottom',
+        'transform', 'transition', 'animation', 'line-height', 'word-spacing',
+        'z-index', 'float', 'opacity', 'box-shadow', 'outline'
+    ];
+    return validProperties.includes(property);
+}
 
-// Add sound effects (optional - using Web Audio API)
+// CSS Value Validation Functions
+function isValidColor(value) {
+    const colorKeywords = ['red', 'blue', 'green', 'yellow', 'orange', 'purple', 'pink', 'black', 'white', 'gray', 'grey', 'brown', 'cyan', 'magenta', 'lime', 'navy', 'teal', 'silver', 'maroon', 'olive', 'aqua', 'fuchsia'];
+    const hexPattern = /^#[0-9A-Fa-f]{3,6}$/;
+    const rgbPattern = /^rgb\(\s*\d+\s*,\s*\d+\s*,\s*\d+\s*\)$/;
+    const rgbaPattern = /^rgba\(\s*\d+\s*,\s*\d+\s*,\s*\d+\s*,\s*[0-9.]+\s*\)$/;
+    
+    return colorKeywords.includes(value.toLowerCase()) || 
+           hexPattern.test(value) || 
+           rgbPattern.test(value) || 
+           rgbaPattern.test(value);
+}
+
+function isValidSize(value) {
+    const sizePattern = /^\d+(\.\d+)?(px|em|rem|%|vh|vw)$/;
+    return sizePattern.test(value) || value === 'auto';
+}
+
+function isValidFontWeight(value) {
+    const validWeights = ['normal', 'bold', 'bolder', 'lighter', '100', '200', '300', '400', '500', '600', '700', '800', '900'];
+    return validWeights.includes(value);
+}
+
+function isValidFontStyle(value) {
+    const validStyles = ['normal', 'italic', 'oblique'];
+    return validStyles.includes(value);
+}
+
+function isValidTextDecoration(value) {
+    const validDecorations = ['none', 'underline', 'overline', 'line-through', 'blink'];
+    return validDecorations.includes(value) || value.includes('underline') || value.includes('line-through');
+}
+
+function isValidTextAlign(value) {
+    const validAligns = ['left', 'right', 'center', 'justify'];
+    return validAligns.includes(value);
+}
+
+function isValidBorder(value) {
+    // Basic border validation - should contain width, style, and optionally color
+    return value.includes('solid') || value.includes('dashed') || value.includes('dotted') || value.includes('none');
+}
+
+function isValidDisplay(value) {
+    const validDisplays = ['block', 'inline', 'inline-block', 'flex', 'grid', 'none', 'table', 'table-cell'];
+    return validDisplays.includes(value);
+}
+
+function isValidPosition(value) {
+    const validPositions = ['static', 'relative', 'absolute', 'fixed', 'sticky'];
+    return validPositions.includes(value);
+}
+
+function isValidTextTransform(value) {
+    const validTransforms = ['none', 'capitalize', 'uppercase', 'lowercase'];
+    return validTransforms.includes(value);
+}
+
+function isValidFloat(value) {
+    const validFloats = ['left', 'right', 'none'];
+    return validFloats.includes(value);
+}
+
+// Apply CSS rules to an element (with improved validation)
+function applyCSSToElement(element, cssRules) {
+    let appliedRules = 0;
+    
+    cssRules.forEach(rule => {
+        const property = rule.property;
+        const value = rule.value;
+        
+        // Validate and apply CSS properties with strict value checking
+        switch (property) {
+            case 'background-color':
+                if (isValidColor(value)) {
+                    element.style.backgroundColor = value;
+                    appliedRules++;
+                }
+                break;
+            case 'color':
+                if (isValidColor(value)) {
+                    element.style.color = value;
+                    appliedRules++;
+                }
+                break;
+            case 'font-size':
+                if (isValidSize(value)) {
+                    element.style.fontSize = value;
+                    appliedRules++;
+                }
+                break;
+            case 'font-weight':
+                if (isValidFontWeight(value)) {
+                    element.style.fontWeight = value;
+                    appliedRules++;
+                }
+                break;
+            case 'font-style':
+                if (isValidFontStyle(value)) {
+                    element.style.fontStyle = value;
+                    appliedRules++;
+                }
+                break;
+            case 'text-decoration':
+                if (isValidTextDecoration(value)) {
+                    element.style.textDecoration = value;
+                    appliedRules++;
+                }
+                break;
+            case 'text-align':
+                if (isValidTextAlign(value)) {
+                    element.style.textAlign = value;
+                    appliedRules++;
+                }
+                break;
+            case 'border':
+                if (isValidBorder(value)) {
+                    element.style.border = value;
+                    appliedRules++;
+                }
+                break;
+            case 'border-radius':
+                if (isValidSize(value)) {
+                    element.style.borderRadius = value;
+                    appliedRules++;
+                }
+                break;
+            case 'padding':
+                if (isValidSize(value)) {
+                    element.style.padding = value;
+                    appliedRules++;
+                }
+                break;
+            case 'margin':
+                if (isValidSize(value)) {
+                    element.style.margin = value;
+                    appliedRules++;
+                }
+                break;
+            case 'width':
+                if (isValidSize(value)) {
+                    element.style.width = value;
+                    appliedRules++;
+                }
+                break;
+            case 'height':
+                if (isValidSize(value)) {
+                    element.style.height = value;
+                    appliedRules++;
+                }
+                break;
+            case 'display':
+                if (isValidDisplay(value)) {
+                    element.style.display = value;
+                    appliedRules++;
+                }
+                break;
+            case 'position':
+                if (isValidPosition(value)) {
+                    element.style.position = value;
+                    appliedRules++;
+                }
+                break;
+            case 'left':
+            case 'top':
+            case 'right':
+            case 'bottom':
+                if (isValidSize(value)) {
+                    element.style[property] = value;
+                    appliedRules++;
+                }
+                break;
+            case 'text-shadow':
+                element.style.textShadow = value;
+                appliedRules++;
+                break;
+            case 'letter-spacing':
+                if (isValidSize(value)) {
+                    element.style.letterSpacing = value;
+                    appliedRules++;
+                }
+                break;
+            case 'text-transform':
+                if (isValidTextTransform(value)) {
+                    element.style.textTransform = value;
+                    appliedRules++;
+                }
+                break;
+            case 'transform':
+                element.style.transform = value;
+                appliedRules++;
+                break;
+            case 'transition':
+                element.style.transition = value;
+                appliedRules++;
+                break;
+            case 'animation':
+                element.style.animation = value;
+                appliedRules++;
+                break;
+            case 'font-family':
+                element.style.fontFamily = value;
+                appliedRules++;
+                break;
+            case 'line-height':
+                element.style.lineHeight = value;
+                appliedRules++;
+                break;
+            case 'word-spacing':
+                if (isValidSize(value)) {
+                    element.style.wordSpacing = value;
+                    appliedRules++;
+                }
+                break;
+            case 'z-index':
+                if (!isNaN(value)) {
+                    element.style.zIndex = value;
+                    appliedRules++;
+                }
+                break;
+            case 'float':
+                if (isValidFloat(value)) {
+                    element.style.float = value;
+                    appliedRules++;
+                }
+                break;
+        }
+    });
+    
+    // Return the number of successfully applied rules
+    return appliedRules;
+}
+
+// Show success message
+function showSuccess(element, message) {
+    const successDiv = document.createElement('div');
+    successDiv.style.cssText = `
+        position: fixed;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #4caf50;
+        color: white;
+        padding: 12px 24px;
+        border-radius: 25px;
+        font-size: 1rem;
+        font-weight: bold;
+        z-index: 1000;
+        box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+        border: 2px solid #45a049;
+        animation: slideDown 0.5s ease;
+        max-width: 90%;
+        text-align: center;
+    `;
+    successDiv.textContent = message;
+    
+    // Add to body instead of element to ensure visibility
+    document.body.appendChild(successDiv);
+    
+    setTimeout(() => {
+        successDiv.remove();
+    }, 3000);
+}
+
+// Show error message
+function showError(element, message) {
+    const errorDiv = document.createElement('div');
+    errorDiv.style.cssText = `
+        position: fixed;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #f44336;
+        color: white;
+        padding: 12px 24px;
+        border-radius: 25px;
+        font-size: 1rem;
+        font-weight: bold;
+        z-index: 1000;
+        box-shadow: 0 4px 12px rgba(244, 67, 54, 0.3);
+        border: 2px solid #d32f2f;
+        animation: slideDown 0.5s ease;
+        max-width: 90%;
+        text-align: center;
+    `;
+    errorDiv.textContent = message;
+    
+    // Add to body instead of element to ensure visibility
+    document.body.appendChild(errorDiv);
+    
+    setTimeout(() => {
+        errorDiv.remove();
+    }, 3000);
+}
+
+// Add sound effects
 function playSound(frequency, duration) {
     try {
         const audioContext = new (window.AudioContext || window.webkitAudioContext)();
@@ -561,46 +582,72 @@ function playSound(frequency, duration) {
     }
 }
 
-// Add celebration sound when exercise is completed
+// Celebration sound when lesson is completed
 function playCelebrationSound() {
     playSound(523, 0.1); // C5
     setTimeout(() => playSound(659, 0.1), 100); // E5
     setTimeout(() => playSound(784, 0.2), 200); // G5
 }
 
-// Enhanced markExerciseCompleted function with sound
-function markExerciseCompleted(exerciseNumber) {
-    if (!completedExercises.has(exerciseNumber)) {
-        completedExercises.add(exerciseNumber);
-        updateProgress();
-        saveProgress();
-        
-        // Mark the exercise card as completed
-        const exerciseCard = document.querySelector(`[data-exercise="${exerciseNumber}"]`);
-        if (exerciseCard) {
-            exerciseCard.classList.add('completed');
-        }
-        
-        // Play celebration sound
-        playCelebrationSound();
-        
-        showAchievement(exerciseNumber);
-    }
-}
-
-// Reset all exercises (for testing or restart)
-function resetAllExercises() {
-    completedExercises.clear();
+// Reset all lessons (for testing or restart)
+function resetAllLessons() {
+    completedLessons.clear();
     updateProgress();
     saveProgress();
     
-    // Remove completed class from all exercise cards
-    document.querySelectorAll('.exercise-card').forEach(card => {
+    // Remove completed class from all lesson cards
+    document.querySelectorAll('.lesson-card').forEach(card => {
         card.classList.remove('completed');
     });
     
-    console.log('All exercises reset!');
+    // Clear all code editors
+    document.querySelectorAll('.code-editor textarea').forEach(textarea => {
+        textarea.value = '';
+    });
+    
+    // Reset all result elements
+    document.querySelectorAll('.demo-box').forEach(element => {
+        element.style.cssText = '';
+        element.className = 'demo-box';
+    });
+    
+    console.log('All lessons reset!');
 }
 
 // Export functions for global access
-window.resetAllExercises = resetAllExercises;
+window.resetAllLessons = resetAllLessons;
+
+// Add keyboard shortcuts
+document.addEventListener('keydown', function(e) {
+    // Ctrl+Enter to run code
+    if (e.ctrlKey && e.key === 'Enter') {
+        const activeTextarea = document.activeElement;
+        if (activeTextarea && activeTextarea.tagName === 'TEXTAREA') {
+            const textareaId = activeTextarea.id;
+            const lessonNumber = textareaId.replace('code', '');
+            runCode(lessonNumber);
+        }
+    }
+    
+    // Escape to close modal
+    if (e.key === 'Escape') {
+        const modal = document.getElementById('achievementModal');
+        modal.style.display = 'none';
+    }
+});
+
+// Add helpful tooltips
+function addTooltips() {
+    const codeEditors = document.querySelectorAll('.code-editor textarea');
+    codeEditors.forEach(editor => {
+        editor.title = "Tip: Press Ctrl+Enter to run your code!";
+    });
+    
+    const runButtons = document.querySelectorAll('.run-btn');
+    runButtons.forEach(button => {
+        button.title = "Click to see your CSS code in action!";
+    });
+}
+
+// Initialize tooltips when DOM is ready
+document.addEventListener('DOMContentLoaded', addTooltips);
